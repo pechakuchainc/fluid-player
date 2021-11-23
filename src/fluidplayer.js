@@ -552,7 +552,11 @@ const fluidPlayerClass = function () {
             "vast_video_loading_" + self.videoPlayerId
         );
 
-        loaderDiv.style.display = showLoader ? "table" : "none";
+        // Added by KB
+        // Uncaught TypeError: Cannot read properties of null (reading 'style')
+        if (loaderDiv) {
+            loaderDiv.style.display = showLoader ? "table" : "none";
+        }
     };
 
     self.sendRequest = (
