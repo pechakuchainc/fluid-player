@@ -2119,8 +2119,6 @@ const fluidPlayerClass = function () {
                 contextMenuList.appendChild(linkItem);
             }
             console.log("CONTEXT MENU LIST:", contextMenuList);
-            // Added by KB - remove last link, which should be the 'Fluid Player v3' link.
-            contextMenuList.removeChild(contextMenuList.lastChild);
         }
 
         if (showDefaultControls) {
@@ -2157,15 +2155,16 @@ const fluidPlayerClass = function () {
             contextMenuList.appendChild(menuItemFullscreen);
         }
 
-        const menuItemVersion = document.createElement("li");
-        menuItemVersion.id = self.videoPlayerId + "context_option_homepage";
-        menuItemVersion.innerHTML = "Fluid Player " + self.version;
-        menuItemVersion.addEventListener(
-            "click",
-            () => window.open(self.homepage, "_blank"),
-            false
-        );
-        contextMenuList.appendChild(menuItemVersion);
+        // const menuItemVersion = document.createElement("li");
+        // menuItemVersion.id = self.videoPlayerId + "context_option_homepage";
+        // menuItemVersion.innerHTML = "Fluid Player " + self.version;
+        // menuItemVersion.addEventListener(
+        //     "click",
+        //     () => window.open(self.homepage, "_blank"),
+        //     false
+        // );
+        // // Commenting out, which should prevent this from being an option in the context menu
+        // contextMenuList.appendChild(menuItemVersion);
 
         self.domRef.player.parentNode.insertBefore(
             divContextMenu,
