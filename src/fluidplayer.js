@@ -2118,6 +2118,7 @@ const fluidPlayerClass = function () {
                 );
                 contextMenuList.appendChild(linkItem);
             }
+            console.log("CONTEXT MENU LIST:", contextMenuList);
             // Added by KB - remove last link, which should be the 'Fluid Player v3' link.
             contextMenuList.removeChild(contextMenuList.lastChild);
         }
