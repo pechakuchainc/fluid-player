@@ -367,7 +367,7 @@ const fluidPlayerClass = function () {
 
         self.initLoop();
 
-        self.displayOptions.layoutControls.playerInitCallback();
+        //self.displayOptions.layoutControls.playerInitCallback();
 
         self.createVideoSourceSwitch();
 

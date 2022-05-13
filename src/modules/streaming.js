@@ -25,7 +25,7 @@ export default function (playerInstance, options) {
                 }
                 break;
             case 'application/x-mpegurl': // HLS
-                if (!playerInstance.hlsScriptLoaded || !window.Hls) {
+                if (!playerInstance.hlsScriptLoaded && !window.Hls) {
                     console.log("Loading HLS");
                     //playerInstance.hlsScriptLoaded = true;
                     import(/* webpackChunkName: "hlsjs" */ 'hls.js').then((it) => {
@@ -88,7 +88,7 @@ export default function (playerInstance, options) {
     };
 
     playerInstance.initialiseHls = () => {
-        if (Hls.isSupported()) {
+        if (window.Hls && window.Hls.isSupported()) {
 
             const defaultOptions = {
                 debug: typeof FP_DEBUG !== 'undefined' && FP_DEBUG === true,
@@ -100,7 +100,7 @@ export default function (playerInstance, options) {
             };
 
             const options = playerInstance.displayOptions.modules.configureHls(defaultOptions);
-            const hls = new Hls(options);
+            const hls = new window.Hls(options);
             playerInstance.displayOptions.modules.onBeforeInitHls(hls);
 
             hls.attachMedia(playerInstance.domRef.player);
