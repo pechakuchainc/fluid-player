@@ -385,8 +385,8 @@ const fluidPlayerClass = function () {
         // Streamers will re-initialize once ad has been shown.
         const preRolls = self.findRoll("preRoll");
         if (!preRolls || 0 === preRolls.length) {
-            console.log("FLUID init initialiseStreamers");
-            self.initialiseStreamers();
+            // console.log("FLUID init initialiseStreamers");
+            // self.initialiseStreamers();
         }
 
         const _play_videoPlayer = playerNode.play;
