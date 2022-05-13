@@ -535,6 +535,8 @@ const fluidPlayerClass = function () {
                 }
             }
         } catch (_ignored) {}
+        
+        self.displayOptions.layoutControls.playerInitCallback();
     };
 
     self.getCurrentVideoDuration = () => {
