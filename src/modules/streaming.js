@@ -25,13 +25,17 @@ export default function (playerInstance, options) {
                 }
                 break;
             case 'application/x-mpegurl': // HLS
-                if (!playerInstance.hlsScriptLoaded && !window.Hls) {
-                    playerInstance.hlsScriptLoaded = true;
+                if (!playerInstance.hlsScriptLoaded || !window.Hls) {
+                    console.log("Loading HLS");
+                    //playerInstance.hlsScriptLoaded = true;
                     import(/* webpackChunkName: "hlsjs" */ 'hls.js').then((it) => {
                         window.Hls = it.default;
+                        console.log("HLS Loaded; initializeHls");
                         playerInstance.initialiseHls();
+                        playerInstance.hlsScriptLoaded = true;
                     });
                 } else {
+                    console.log("Already Loaded HLS; initialiseHls");
                     playerInstance.initialiseHls();
                 }
                 break;
