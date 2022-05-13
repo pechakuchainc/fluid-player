@@ -385,6 +385,7 @@ const fluidPlayerClass = function () {
         // Streamers will re-initialize once ad has been shown.
         const preRolls = self.findRoll("preRoll");
         if (!preRolls || 0 === preRolls.length) {
+            console.log("FLUID init initialiseStreamers");
             self.initialiseStreamers();
         }
 
@@ -2545,6 +2546,7 @@ const fluidPlayerClass = function () {
     };
 
     self.setVideoSource = (url) => {
+        console.log("FLUID setVideoSource",url);
         if (self.mobileInfo.userOs === "iOS" && url.indexOf(".mkv") > 0) {
             console.log("[FP_ERROR] .mkv files not supported by iOS devices.");
             return false;
