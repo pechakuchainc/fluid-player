@@ -969,6 +969,7 @@ const fluidPlayerClass = function () {
     };
 
     self.playPauseAnimationToggle = (play) => {
+        console.log("FLUID playPauseAnimationToggle",play);
         if (
             self.isCurrentlyPlayingAd ||
             !self.displayOptions.layoutControls.playPauseAnimation ||
