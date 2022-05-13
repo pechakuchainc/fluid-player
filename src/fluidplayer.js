@@ -2597,7 +2597,10 @@ const fluidPlayerClass = function () {
                 self.domRef.player.play();
             } else {
                 self.domRef.player.pause();
-                self.controlPlayPauseToggle(self.videoPlayerId);
+                // JBB - hoping this fixes leaving the play button up
+                if (self.domRef.player.currentTime > 0) {
+                    self.controlPlayPauseToggle(self.videoPlayerId);
+                }
             }
 
             self.isSwitchingSource = false;
