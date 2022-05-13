@@ -1932,6 +1932,7 @@ const fluidPlayerClass = function () {
         self.domRef.player.addEventListener(
             "play",
             () => {
+                console.log("FLUID self.domRef.player.play");
                 self.controlPlayPauseToggle();
                 self.contolVolumebarUpdate();
             },
@@ -1941,6 +1942,7 @@ const fluidPlayerClass = function () {
         self.domRef.player.addEventListener(
             "fluidplayerpause",
             () => {
+                console.log("FLUID self.domRef.player.fluidplayerpause");
                 self.controlPlayPauseToggle();
             },
             false
@@ -2576,6 +2578,7 @@ const fluidPlayerClass = function () {
 
     self.setCurrentTimeAndPlay = (newCurrentTime, shouldPlay) => {
         const loadedMetadata = () => {
+            console.log("FLUID setCurrentTimeAndPlay loadedMetadata");
             self.domRef.player.currentTime = newCurrentTime;
             self.domRef.player.removeEventListener(
                 "loadedmetadata",
@@ -2589,6 +2592,7 @@ const fluidPlayerClass = function () {
                 self.domRef.player.addEventListener("playing", videoPlayStart);
             }
 
+            console.log("FLUID setCurrentTimeAndPlay loadedMetadata shouldPlay, currentTime",shouldPlay,self.domRef.player.currentTime);
             if (shouldPlay) {
                 self.domRef.player.play();
             } else {
