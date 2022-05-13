@@ -537,7 +537,10 @@ const fluidPlayerClass = function () {
             }
         } catch (_ignored) {}
         
-        //self.displayOptions.layoutControls.playerInitCallback();
+        // JBB - playerInitCallback will be called after Hls is setup. If not Hls, then call it here.
+        if (self.displayOptions.layoutControls.mediaType !== 'application/dash+xml' && self.displayOptions.layoutControls.mediaType !== 'application/x-mpegurl') {
+            self.displayOptions.layoutControls.playerInitCallback();
+        }
     };
 
     self.getCurrentVideoDuration = () => {
@@ -2571,11 +2574,6 @@ const fluidPlayerClass = function () {
         self.originalSrc = url;
         self.displayOptions.layoutControls.mediaType = self.getCurrentSrcType();
         self.initialiseStreamers();
-        
-        // JBB - playerInitCallback will be called after Hls is setup. If not Hls, then call it here.
-        if (self.displayOptions.layoutControls.mediaType !== 'application/dash+xml' && self.displayOptions.layoutControls.mediaType !== 'application/x-mpegurl') {
-            self.displayOptions.layoutControls.playerInitCallback();
-        }
     };
 
     self.setCurrentTimeAndPlay = (newCurrentTime, shouldPlay) => {
