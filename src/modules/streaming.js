@@ -34,8 +34,8 @@ export default function (playerInstance, options) {
                         playerInstance.initialiseHls();
                         //playerInstance.hlsScriptLoaded = true;
                     });
-                } else {
-                    console.log("Already Loaded/Loading HLS; initialiseHls");
+                } else if (window.Hls) {
+                    console.log("Already Loaded Hls; initialiseHls");
                     playerInstance.initialiseHls();
                 }
                 break;
