@@ -886,6 +886,7 @@ const fluidPlayerClass = function () {
     };
 
     self.controlPlayPauseToggle = () => {
+        console.log("FLUID controlPlayPauseToggle");
         const playPauseButton =
             self.domRef.player.parentNode.getElementsByClassName(
                 "fluid_control_playpause"
