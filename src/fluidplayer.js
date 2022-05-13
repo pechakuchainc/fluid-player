@@ -1757,6 +1757,7 @@ const fluidPlayerClass = function () {
     };
 
     self.initialPlay = () => {
+        console.log("FLUID initialPlay");
         self.domRef.player.addEventListener("playing", () => {
             self.toggleLoader(false);
         });
@@ -1793,6 +1794,7 @@ const fluidPlayerClass = function () {
     };
 
     self.playPauseToggle = () => {
+        console.log("FLUID playPauseToggle");
         const isFirstStart = !self.firstPlayLaunched;
         const preRolls = self.findRoll("preRoll");
 
