@@ -27,15 +27,15 @@ export default function (playerInstance, options) {
             case 'application/x-mpegurl': // HLS
                 if (!playerInstance.hlsScriptLoaded && !window.Hls) {
                     console.log("Loading HLS");
-                    //playerInstance.hlsScriptLoaded = true;
+                    playerInstance.hlsScriptLoaded = true;
                     import(/* webpackChunkName: "hlsjs" */ 'hls.js').then((it) => {
                         window.Hls = it.default;
                         console.log("HLS Loaded; initializeHls");
                         playerInstance.initialiseHls();
-                        playerInstance.hlsScriptLoaded = true;
+                        //playerInstance.hlsScriptLoaded = true;
                     });
                 } else {
-                    console.log("Already Loaded HLS; initialiseHls");
+                    console.log("Already Loaded/Loading HLS; initialiseHls");
                     playerInstance.initialiseHls();
                 }
                 break;
@@ -81,6 +81,8 @@ export default function (playerInstance, options) {
             playerInstance.displayOptions.modules.onAfterInitDash(dashPlayer);
 
             playerInstance.dashPlayer = dashPlayer;
+            
+            playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
         } else {
             playerInstance.nextSource();
             console.log('[FP_WARNING] Media type not supported by this browser using DASH.js. (application/dash+xml)');
@@ -113,6 +115,8 @@ export default function (playerInstance, options) {
             if (!playerInstance.firstPlayLaunched && playerInstance.displayOptions.layoutControls.autoPlay) {
                 playerInstance.domRef.player.play();
             }
+            
+            playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
         } else {
             playerInstance.nextSource();
             console.log('[FP_WARNING] Media type not supported by this browser using HLS.js. (application/x-mpegURL)');
