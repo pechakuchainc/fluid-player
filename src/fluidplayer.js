@@ -1921,6 +1921,7 @@ const fluidPlayerClass = function () {
             "click",
             ".fluid_control_playpause",
             () => {
+                console.log("FLUID trackEvent",self.firstPlayLaunched);
                 if (!self.firstPlayLaunched) {
                     self.domRef.player.removeEventListener(
                         "play",
