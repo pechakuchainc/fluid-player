@@ -27,20 +27,22 @@ export default function (playerInstance, options) {
                 }
                 break;
             case 'application/x-mpegurl': // HLS
-                if (!playerInstance.hlsScriptLoaded && !window.Hls) {
-                    console.log("Loading HLS");
-                    playerInstance.hlsScriptLoaded = true;
-                    import(/* webpackChunkName: "hlsjs" */ 'hls.js').then((it) => {
-                        window.Hls = it.default;
-                        console.log("HLS Loaded; initializeHls");
+                if (!playerInstance.domRef.player.canPlayType('application/vnd.apple.mpegurl')) {
+                    if (!playerInstance.hlsScriptLoaded && !window.Hls) {
+                        console.log("Loading HLS");
+                        playerInstance.hlsScriptLoaded = true;
+                        import(/* webpackChunkName: "hlsjs" */ 'hls.js').then((it) => {
+                            window.Hls = it.default;
+                            console.log("HLS Loaded; initializeHls");
+                            playerInstance.initialiseHls();
+                            playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
+                            //playerInstance.hlsScriptLoaded = true;
+                        });
+                    } else if (window.Hls) {
+                        console.log("Already Loaded Hls; initialiseHls");
                         playerInstance.initialiseHls();
-                        playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
-                        //playerInstance.hlsScriptLoaded = true;
-                    });
-                } else if (window.Hls) {
-                    console.log("Already Loaded Hls; initialiseHls");
-                    playerInstance.initialiseHls();
-                    playerInstance.displayOptions.layoutControls.playerInitCallback();
+                        playerInstance.displayOptions.layoutControls.playerInitCallback();
+                    }
                 }
                 break;
         }
@@ -121,8 +123,6 @@ export default function (playerInstance, options) {
             }
             
             //playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
-        } else if (playerInstance.domRef.player.canPlayType('application/vnd.apple.mpegurl')) {
-            playerInstance.domRef.player.src = playerInstance.originalSrc;
         } else {
             playerInstance.nextSource();
             console.log('[FP_WARNING] Media type not supported by this browser using HLS.js. (application/x-mpegURL)');
