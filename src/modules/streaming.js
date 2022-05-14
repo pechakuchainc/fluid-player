@@ -19,6 +19,7 @@ export default function (playerInstance, options) {
                     import(/* webpackChunkName: "dashjs" */ 'dashjs').then((it) => {
                         window.dashjs = it.default;
                         playerInstance.initialiseDash();
+                        playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
                     });
                 } else {
                     playerInstance.initialiseDash();
@@ -32,6 +33,7 @@ export default function (playerInstance, options) {
                         window.Hls = it.default;
                         console.log("HLS Loaded; initializeHls");
                         playerInstance.initialiseHls();
+                        playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
                         //playerInstance.hlsScriptLoaded = true;
                     });
                 } else if (window.Hls) {
@@ -82,7 +84,7 @@ export default function (playerInstance, options) {
 
             playerInstance.dashPlayer = dashPlayer;
             
-            playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
+            //playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
         } else {
             playerInstance.nextSource();
             console.log('[FP_WARNING] Media type not supported by this browser using DASH.js. (application/dash+xml)');
@@ -116,7 +118,7 @@ export default function (playerInstance, options) {
                 playerInstance.domRef.player.play();
             }
             
-            playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
+            //playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
         } else {
             playerInstance.nextSource();
             console.log('[FP_WARNING] Media type not supported by this browser using HLS.js. (application/x-mpegURL)');
