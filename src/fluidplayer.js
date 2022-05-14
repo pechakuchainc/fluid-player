@@ -2574,7 +2574,7 @@ const fluidPlayerClass = function () {
         self.domRef.player.src = url;
         self.originalSrc = url;
         self.displayOptions.layoutControls.mediaType = self.getCurrentSrcType();
-        //self.initialiseStreamers();
+        self.initialiseStreamers();
     };
 
     self.setCurrentTimeAndPlay = (newCurrentTime, shouldPlay) => {
