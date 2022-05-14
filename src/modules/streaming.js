@@ -121,6 +121,8 @@ export default function (playerInstance, options) {
             }
             
             //playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
+        } else if (playerInstance.domRef.player.canPlayType('application/vnd.apple.mpegurl')) {
+            playerInstance.domRef.player.src = playerInstance.originalSrc;
         } else {
             playerInstance.nextSource();
             console.log('[FP_WARNING] Media type not supported by this browser using HLS.js. (application/x-mpegURL)');
