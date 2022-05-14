@@ -910,9 +910,9 @@ const fluidPlayerClass = function () {
         
         if (initialPlay) {
             console.log("FLUID controlPlayPauseToggle initialPlay");
-            // document.getElementById(
-            //     self.videoPlayerId + "_fluid_initial_play"
-            // ).style.display = "none";
+            document.getElementById(
+                self.videoPlayerId + "_fluid_initial_play"
+            ).style.display = "none";
             document.getElementById(
                 self.videoPlayerId + "_fluid_initial_play_button"
             ).style.opacity = "1";
@@ -1010,9 +1010,9 @@ const fluidPlayerClass = function () {
                 .classList.remove("transform-active");
                 
             // JBB add "play" button back to middle
-            document
-                .getElementById(self.videoPlayerId + "_fluid_state_button")
-                .classList.add("fluid_initial_play_button");
+            // document
+            //     .getElementById(self.videoPlayerId + "_fluid_state_button")
+            //     .classList.add("fluid_initial_play_button");
             
         }, 800);
     };
