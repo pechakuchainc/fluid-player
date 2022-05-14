@@ -2819,10 +2819,12 @@ const fluidPlayerClass = function () {
             '"><div id="' +
             self.videoPlayerId +
             '_fluid_state_button" class="fluid_initial_play_button"></div></div>';
+        
         const initPlayFunction = function () {
             self.playPauseToggle();
-            containerDiv.removeEventListener("click", initPlayFunction);
+            //containerDiv.removeEventListener("click", initPlayFunction);
         };
+        
         containerDiv.addEventListener("click", initPlayFunction);
 
         // If the user has chosen to not show the play button we'll make it invisible
