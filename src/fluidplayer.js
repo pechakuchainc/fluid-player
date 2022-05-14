@@ -1005,10 +1005,17 @@ const fluidPlayerClass = function () {
         document
             .getElementById(self.videoPlayerId + "_fluid_initial_play")
             .classList.add("transform-active");
+
         setTimeout(function () {
             document
                 .getElementById(self.videoPlayerId + "_fluid_initial_play")
                 .classList.remove("transform-active");
+                
+            // JBB add "play" button back to middle
+            document
+                .getElementById(self.videoPlayerId + "_fluid_state_button")
+                .classList.add("fluid_initial_play_button");
+            
         }, 800);
     };
 
