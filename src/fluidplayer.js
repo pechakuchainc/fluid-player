@@ -910,9 +910,9 @@ const fluidPlayerClass = function () {
         
         if (initialPlay) {
             console.log("FLUID controlPlayPauseToggle initialPlay");
-            document.getElementById(
-                self.videoPlayerId + "_fluid_initial_play"
-            ).style.display = "none";
+            // document.getElementById(
+            //     self.videoPlayerId + "_fluid_initial_play"
+            // ).style.display = "none";
             document.getElementById(
                 self.videoPlayerId + "_fluid_initial_play_button"
             ).style.opacity = "1";
@@ -921,9 +921,7 @@ const fluidPlayerClass = function () {
         console.log("FLUID controlPlayPauseToggle paused",self.domRef.player.paused);
         if (!self.domRef.player.paused) {
             for (let i = 0; i < playPauseButton.length; i++) {
-                playPauseButton[i].className = playPauseButton[
-                    i
-                ].className.replace(
+                playPauseButton[i].className = playPauseButton[i].className.replace(
                     /\bfluid_button_play\b/g,
                     "fluid_button_pause"
                 );
