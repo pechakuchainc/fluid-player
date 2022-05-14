@@ -974,6 +974,20 @@ const fluidPlayerClass = function () {
         }
     };
 
+    self.forceInitialPlayButton = () => {
+        document
+            .getElementById(self.videoPlayerId + "_fluid_state_button")
+            .classList.add("fluid_initial_play_button");
+            
+        document.getElementById(
+            self.videoPlayerId + "_fluid_initial_play"
+        ).style.display = "block";
+        
+        document.getElementById(
+            self.videoPlayerId + "_fluid_initial_play_button"
+        ).style.opacity = "1";
+    }
+
     self.playPauseAnimationToggle = (play) => {
         console.log("FLUID playPauseAnimationToggle",play);
         if (
@@ -3744,6 +3758,10 @@ const fluidPlayerInterface = function (instance) {
     this.skipTo = (position) => {
         return instance.skipTo(position);
     };
+    
+    this.forceInitialPlayButton = () => {
+        return instance.forceInitialPlayButton();
+    }
 
     this.setPlaybackSpeed = (speed) => {
         return instance.setPlaybackSpeed(speed);
