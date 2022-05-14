@@ -23,6 +23,7 @@ export default function (playerInstance, options) {
                     });
                 } else {
                     playerInstance.initialiseDash();
+                    playerInstance.displayOptions.layoutControls.playerInitCallback();
                 }
                 break;
             case 'application/x-mpegurl': // HLS
@@ -39,6 +40,7 @@ export default function (playerInstance, options) {
                 } else if (window.Hls) {
                     console.log("Already Loaded Hls; initialiseHls");
                     playerInstance.initialiseHls();
+                    playerInstance.displayOptions.layoutControls.playerInitCallback();
                 }
                 break;
         }
