@@ -915,7 +915,7 @@ const fluidPlayerClass = function () {
             ).style.display = "none";
             document.getElementById(
                 self.videoPlayerId + "_fluid_initial_play_button"
-            ).style.opacity = "1";
+            ).style.opacity = "0.9";
         }
         
         console.log("FLUID controlPlayPauseToggle paused",self.domRef.player.paused);
@@ -962,7 +962,7 @@ const fluidPlayerClass = function () {
             ).style.display = "block";
             document.getElementById(
                 self.videoPlayerId + "_fluid_initial_play_button"
-            ).style.opacity = "1";
+            ).style.opacity = "0.9";
         }
 
         if (fpLogo) {
@@ -988,7 +988,7 @@ const fluidPlayerClass = function () {
         
         document.getElementById(
             self.videoPlayerId + "_fluid_initial_play_button"
-        ).style.opacity = "1";
+        ).style.opacity = "0.9";
     }
 
     self.playPauseAnimationToggle = (play) => {
