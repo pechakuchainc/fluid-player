@@ -977,6 +977,9 @@ const fluidPlayerClass = function () {
     self.forceInitialPlayButton = () => {
         document
             .getElementById(self.videoPlayerId + "_fluid_state_button")
+            .classList.remove("fluid_initial_pause_button");
+        document
+            .getElementById(self.videoPlayerId + "_fluid_state_button")
             .classList.add("fluid_initial_play_button");
             
         document.getElementById(
