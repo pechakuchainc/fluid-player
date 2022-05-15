@@ -43,6 +43,8 @@ export default function (playerInstance, options) {
                         playerInstance.initialiseHls();
                         playerInstance.displayOptions.layoutControls.playerInitCallback();
                     }
+                } else {
+                    playerInstance.displayOptions.layoutControls.playerInitCallback(); // JBB - do this here!
                 }
                 break;
         }
